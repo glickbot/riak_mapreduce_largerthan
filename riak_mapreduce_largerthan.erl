@@ -27,7 +27,6 @@ map_largerthan(RiakObject, _, [Size]) when is_binary(Size) ->
                 riak_object:key(RiakObject),
                 integer_to_binary(DataSize)
 		    ]]
-        end
     end;
 map_largerthan(_, _, _) ->
 	[].
