@@ -2,6 +2,10 @@ riak_mapreduce_largerthan
 =========================
 
 ### Usage
+
+#### Install the Map Redude function:
+## **NOTE: You need to install this onto all nodes in the cluster**
+
 ``` bash
 $ mkdir /tmp/beam && chown riak:riak /tmp/beam
 $ cd /tmp/beam
@@ -19,6 +23,7 @@ ok
 [Quit]
 ```
 
+#### Query the new mapreduce function:
 Use the following to query the mapreduce function, note the byte size argument in the map function:
 ``` bash
 curl -X POST -H "content-type: application/json" -H "Accept: application/json" http://localhost:8098/mapred --data @-<<\EOF
@@ -32,4 +37,37 @@ EOF
 Use the following URL to stream results:
 ```
 http://localhost:8098/mapred?chunked=true
+```
+### run_mapred_json.sh
+``` bash
+#!/bin/bash
+HOST="localhost:8098"
+CHUNKED="false"
+
+if [ -z $1 ]; then
+   echo "Usage: $0 mapreduce.json"
+   exit
+fi
+curl -X POST -H "content-type: application/json" -H "Accept: application/json" http://$HOST/mapred?chunked=$CHUNKED --data @$1
+```
+Example:
+
+``` bash
+$ ./run_mapred_json.sh mapred_test.json
+```
+
+where mapred_test.json is:
+``` json
+{
+    "inputs":"test",
+    "query":[
+        { "map": {
+          "language":"erlang",
+          "module":"riak_mapreduce_largerthan",
+          "function":"map_largerthan",
+          "keep":true,
+          "arg":["10485760"]
+        }}
+     ]
+}
 ```

@@ -1,11 +1,14 @@
 -module(riak_mapreduce_largerthan).
 -export([map_largerthan/3]).
+-author('Jon Glick <jglick@basho.com>').
+
+%% https://github.com/glickbot/riak_mapreduce_largerthan
 
 %% Largly pulled from Christian Dahlqvist's work:
 %%     - https://github.com/whitenode/riak_mapreduce_utils
 
 % curl -X POST -H "content-type: application/json" -H "Accept: application/json" http://localhost:8098/mapred --data @-<<\EOF
-% {"inputs":"goog",
+% {"inputs":"bucketname",
 % "query":[
 % {"map":{"language":"erlang","module":"riak_mapreduce_largerthan","function":"map_largerthan", "keep":false, "arg":["83886080"]}}
 % ]}
