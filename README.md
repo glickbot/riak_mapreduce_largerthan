@@ -4,7 +4,11 @@ riak_mapreduce_largerthan
 ### Usage
 
 #### Install the Map Redude function:
-## **NOTE: You need to install this onto all nodes in the cluster**
+## Warnings:
+* You need to install this onto *all* nodes in the cluster
+* The mapreduce function will be available *until any node restarts*
+* Instructions for making the function persist across node restarts is below
+
 
 ``` bash
 $ mkdir /tmp/beam && chown riak:riak /tmp/beam
@@ -22,6 +26,12 @@ ok
 > ^D
 [Quit]
 ```
+
+### *Optional*: Make persistant across node restarts:
+``` bash
+$ cp /tmp/riak_mapreduce_largerthan.beam /usr/&lt;libdir&gt;/riak/lib/basho-patches
+```
+( where &lt;libdir&gt; depends on OS, but is usually ether 'lib' or 'lib64' )
 
 #### Query the new mapreduce function:
 Use the following to query the mapreduce function, note the byte size argument in the map function:
