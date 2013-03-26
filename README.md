@@ -3,7 +3,7 @@ riak_mapreduce_largerthan
 
 ### Usage
 
-#### Install the Map Redude function:
+#### Install the Map Reduce function:
 ##### **Warnings**:
 * You need to install this onto **all** nodes in the cluster
 * The mapreduce function will be available **until any node restarts**
