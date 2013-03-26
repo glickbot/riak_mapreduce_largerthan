@@ -23,13 +23,13 @@ Inside riak attach:
 ok
 2> c(riak_mapreduce_largerthan).
 {ok,riak_mapreduce_largerthan}
-> ^D
+3> ^D
 [Quit]
 ```
 
 ### *Optional*: Make persistant across node restarts:
 ``` bash
-$ cp /tmp/riak_mapreduce_largerthan.beam /usr/&lt;libdir&gt;/riak/lib/basho-patches
+$ cp /tmp/riak_mapreduce_largerthan.beam /usr/<libdir>/riak/lib/basho-patches
 ```
 ( where &lt;libdir&gt; depends on OS, but is usually ether 'lib' or 'lib64' )
 
